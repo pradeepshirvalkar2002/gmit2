@@ -1,0 +1,27 @@
+base:
+  project: Insurance
+  random_state: 42
+  target_col: expenses
+
+data_source:
+  s3_data : ../sourcedata/med-insurance.csv
+
+load_data:
+  raw_data: ../data/raw/insurance.csv
+
+split_data:
+  train_path: ../data/processed/train_insurance.csv
+  test_path: ../data/processed/test_insurance.csv
+  test_size: 0.1
+
+estimator:
+  ElasticNet:
+    params:
+      alpha: 0.9
+      l1_ration: 0.7
+
+model_dir: models/model_insurance.pkl
+
+reports:
+  params: reports/params.json
+  score: reports/score.json
